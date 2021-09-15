@@ -1,56 +1,72 @@
 import {
   Link as ChakraLink,
-  Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+  Flex,
+  Heading,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { parseString as parse, parseString } from "xml2js";
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+import { Container } from "../components/Container";
+import { Main } from "../components/Main";
+import { DarkModeSwitch } from "../components/DarkModeSwitch";
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text>
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>typescript</Code>.
-      </Text>
+import React, { useState } from "react";
 
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
+import { Login } from "../components/Login";
+import { Register } from "../components/Register";
 
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
-  </Container>
-)
+// TODO: Add either reading mode or click card to go to page. [o]
 
-export default Index
+enum ButtonText {
+  Register = "To Login",
+  Login = "To Register",
+}
+
+// IMPORTANT COLOR #FF0066
+const Feeds = () => {
+  const [loginToggle, setLoginToggle] = useState(true);
+  const [buttonText, setButtonText] = useState(ButtonText.Login);
+
+  const LoginOrRegistration = () => {
+    if (loginToggle) {
+      return <Login />;
+    } else return <Register />;
+  };
+
+  return (
+    <Container height="100vh" width="100%" overflow="hidden">
+      <Container
+        justifyContent="left"
+        flexDirection="row"
+        width="100%"
+        overflow="hidden">
+        <Main
+          width="100%"
+          maxWidth="100vw"
+          flexDirection="column"
+          minHeight="100vh"
+          flexWrap="wrap"
+          alignItems="center"
+          mt="30%"
+          pt="0">
+          <Button
+            onClick={() => {
+              setLoginToggle(!loginToggle);
+              if (buttonText === ButtonText.Login) {
+                setButtonText(ButtonText.Register);
+              } else {
+                setButtonText(ButtonText.Login);
+              }
+            }}>
+            {buttonText}
+          </Button>
+          {LoginOrRegistration()}
+        </Main>
+      </Container>
+      <DarkModeSwitch />
+    </Container>
+  );
+};
+
+export default Feeds;
