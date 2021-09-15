@@ -2,10 +2,13 @@
 
 This is the front end portion of the RSS reader app that I made. It utilizes NextJS coupled with Chakra-ui. This is a side project mainly for hobby stuff but I will probably deploy this sometime and link it in the few repos that exist for it.
 
-## Tools
-- NextJS/React/TypeScript
-- Chakra-UI
-- urql
+## Tech
+- NextJS
+- React
+- TypeScript
+- GraphQL
+- Chakra-UI : CSS framework
+- urql : GraphQL client
 - xml2js : for parsing xml data
 
 ## Current functionality
