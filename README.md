@@ -2,20 +2,20 @@
 
 This is the front end portion of the RSS reader app that I made. It utilizes NextJS coupled with Chakra-ui. This is a side project mainly for hobby stuff but I will probably deploy this sometime and link it in the few repos that exist for it.
 
-Developed with:
+## Tools
 - NextJS/React/TypeScript
 - Chakra-UI
 - urql
 - xml2js : for parsing xml data
 
-At the moment it only contains functionality to:
+## Current functionality
 - Register Users
 - Login & Logout
 - Add Feeds
 - Read Feeds
 - Various UI muck
 
-Future iterations will be looking at:
+## Future possible features
 - Close additions:
   - Deleting or deactivating ones account
   - Updating account information
